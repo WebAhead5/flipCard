@@ -1,6 +1,6 @@
 
 
-class questionData{
+export class questionData{
     constructor(question,answerIndex,...options){
         this.question = question;
         this.answerIndex = answerIndex;
@@ -17,22 +17,25 @@ class questionData{
     }
 
 }
-let arr=[
+
+const easyQuestions=[
+    new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
+    new questionData("what is the capital Italy?",1 ,"haifa","rome", "madrid"),
+];
+const mediumQuestions= [
     new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
     new questionData("what is the capital Italy?",1 ,"haifa","rome", "madrid"),
 ];
 
-
+const hardQuestions= [
+    new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
+    new questionData("what is the capital Italy?",1 ,"haifa","rome", "madrid"),
+];
 
 //-----------------------------------------------------------------------------------------
-var currentCountdown;
-var intervalID;
-/***
- * this function is used to show a countdown and update the DOM
- * @param seconds - the countdown in seconds
- * @param func - the function that will be called every second of the countdown
- */
-function timer(seconds, func){
+ var currentCountdown;
+ var intervalID;
+ function timer(seconds, func){
     currentCountdown = seconds;
     intervalID= setInterval(()=>{
 
@@ -44,17 +47,14 @@ function timer(seconds, func){
 
     },1000)
 }
-function calculateScoreForRound(){
-    return currentCountdown *gameRulesObj.getScore();
-}
 //-----------------------------------------------------------------------------------------
 
-let playerObj ={
+export const playerObj ={
     playerName:"",
     playerScore: 0,
 
 }
-let gameRulesObj={
+export const gameManagerObj={
     scorePerRound_easyMode: 10,
     scorePerRound_mediumMode: 20,
     scorePerRound_hardMode: 30,
@@ -70,12 +70,44 @@ let gameRulesObj={
 
         }
     },
-    setModeType(mode){
+    setRoundType(mode){
         this.roundType = mode;
-    }
+    },
+    getQuestionsData(){
+        switch (this.roundType.toLowerCase()) {
+            case "easy":
+                return randomizeArray( easyQuestions);
+            case "medium":
+                return randomizeArray(mediumQuestions);
+            case "hard":
+                return randomizeArray(hardQuestions);
+        }
+    },
 
+    /***
+     * this function is used to show a countdown and update the DOM
+     * @param seconds - the countdown in seconds
+     * @param func - the function that will be called every second of the countdown
+     */
+    startTimer(seconds, func){
+        timer(seconds,func);
+    },
+    calculateScoreForRound(){
+    return currentCountdown *gameRulesObj.getScore();
+    }
 
 }
 
+function randomizeArray(arr){
+     let clone =arr.map(x=>x);
+     let retArr=[];
+     while(clone.length>0){
+        let randomNum = Math.floor(Math.random() * clone.length);
+        retArr.push(...clone.splice(randomNum,1));
+     }
+     return retArr;
+}
 
-gameRulesObj.setModeType("hard");
+
+
+
