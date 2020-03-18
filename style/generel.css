@@ -1,0 +1,19 @@
+
+body{
+background-color: green;
+
+}
+
+.game-container{
+    
+    size: 100%;
+    background-color: grey;
+    height: 100vh;
+    
+}
+
+.question{
+    background-color: white;
+    width: 350px;
+    height: 450px;
+}
