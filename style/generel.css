@@ -1,15 +1,20 @@
 
 body{
-background-color: green;
+
+margin: 5vh;
+text-align: center;
+justify-content: center;
+font-family: 'Work Sans';
+font-size: 20px;
 
 }
 
 .game-container{
     
     size: 100%;
-    background-color: grey;
-    height: 100vh;
-    padding: 30px;
+
+    height: 90vh;
+    padding: 10px;
     position: relative;
 
     
@@ -45,6 +50,14 @@ background-color: green;
 
 
 
+.resultPopUp{
+
+
+
+
+}
+
+
 
 
 
@@ -56,19 +69,18 @@ background-color: green;
     height: 450px;
     margin: auto;
     text-align: center;
+    border: black solid;
 
 }
 
 
 .answers{
 
-    background-color: white;
-
-    width: 80vh;
-    height: 400px;
+    
+    width: 80%;
+    height: 350px;
     margin: auto;
     margin-top: 40px;
-    padding: 30px;
     border: 20px;
     border: black solid;
     display: flex;
@@ -81,11 +93,12 @@ background-color: green;
 }
 
 .answers>div{
-    background-color: gray;
-width: 250px;
+background-color: white;
+width: 800px;
+min-width: 250px;
 height: 300px;
 border:blue solid;
-margin: 40px;
+margin: 20px;
 flex-direction: row;
 
 text-align: center;
@@ -95,7 +108,12 @@ align-items: center;
 
 
 .finalScore{
-
-
+    size: 100%;
+    background-color: rgba(128, 128, 128, 0.13);
+    
+    height: 80%;
+    padding: 30px;
+    top: 6%;
+    position: absolute;
     border: greenyellow solid;
 }
