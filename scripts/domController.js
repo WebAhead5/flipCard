@@ -1,5 +1,5 @@
 
-import * as model from "./models";
+import * as model from "./models.js";
 
 let DOM_question  = document.getElementById("question");
 let DOM_option1  = document.getElementById("answer1");
