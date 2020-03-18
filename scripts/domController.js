@@ -1,12 +1,12 @@
 
 import * as model from "./models.js";
 
-//todo add a button within the resultPopup div and link it to the "loadNextQuestion" function
-//todo math the id of the "DOM_resultPopup" variable
-//todo implement the "showAnswer" function
-//todo update/track the player score
-//todo bind the options to relative keys
-//todo implement the "endGame" function
+// add a button within the resultPopup div and link it to the "loadNextQuestion" function
+// math the id of the "DOM_resultPopup" variable
+// implement the "showAnswer" function
+// update/track the player score
+// bind the options to relative keys
+// implement the "endGame" function
 
 
 let DOM_question  = document.getElementById("question");
