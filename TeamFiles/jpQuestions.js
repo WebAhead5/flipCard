@@ -18,3 +18,23 @@
  new questionData("What is the correct HTML for making a drop-down list?",2 ,'<input type="dropdown">', '<input type="list">', '<select>'),
  new questionData("What does HTML stand for?",0 ,'Hyper Text Markup Language', 'Home Tool Markup Language', 'Hyperlinks and Text Markup Language'),
  new questionData("What What does CSS stand for?",0 ,'Cascading Style Sheets  ', 'Computer Style Sheets', 'Creative Style Sheets'),
+
+
+
+
+ //js-----------------------------
+     [
+         new questionData("In JavaScript, how do you print something in the Console?",0,"print(5);","console.log(5);","console.print(5);"),
+         new questionData('In Javascript, how do you get the length of a string?',1,"str.length()","str.length","sizeof(str)"),
+         new questionData("In JavaScript, How do you initialize an array?",2,'var Geeks= “Geek1”, “Geek2”, “Geek3”;','var Geeks=(1:Geek1, 2:Geek2, 3:Geek3);','var Geeks=[“Geek1”, “Geek2”, “Geek3”]'),
+         new questionData("In JavaScript, what method is used to remove the whitespace at the beginning and end of any string?",0,"trim()","strip()","stripped()"),
+         new questionData("In JavaScript, what function is used to add an element to the end of an array",1,"add","push","unshift"),
+         new questionData("In JavaScript, what function is used to add an element to the beginning of an array",2,"add","push","unshift"),
+         new questionData("In Javascript, How do you insert a comment that has more than one line?",0,`/* comment */`, "<!-- comment -->", "// comment //" ),
+         new questionData("In Javascript, Which operator is used to assign a value to a variable?",0,"=","-","*"),
+         new questionData("JavaScript is a ________ Side Scripting Language.",2,"Server","Browser", "None of the above"),
+         new questionData('What is the output of the following code "console.log(typeof(24.49))"?',0,"number","float","24.49"),
+         new questionData("Which type of variable is visible everywhere in your JavaScript code?",0,"global variable","local variable","both"),
+         new questionData("which of the following is equivalent to the number 4?",0,"parseInt(9/2);", "Math.floor(5);", "Math.round(4.5);" )
+     ]
+
