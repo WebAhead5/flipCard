@@ -13,8 +13,13 @@ let DOM_question  = document.getElementById("question");
 let DOM_option1  = document.getElementById("answer1");
 let DOM_option2  = document.getElementById("answer2");
 let DOM_option3  = document.getElementById("answer3");
-let DOM_resultPopup = document.getElementById("resultPopup");//todo match the id
+let DOM_scorecard = document.querySelector("#currentScore");
 
+let DOM_pressSpace  = document.querySelector("#pressSpace");
+//let DOM_answerText  = document.querySelector("#answerText");
+//let DOM_  = document.querySelector("#");
+
+let score = 0 // palyer score
 let questionsDataArray ; 
 let CurrentQuestionDataIndex = 0;
 
@@ -46,13 +51,50 @@ function loadQuestionCard(){
 }
 function showAnswer(selectedAnswer) {
 
-    // DOM_resultPopup.classList.toggle("");  ///todo setup the current class name
-    console.log(selectedAnswer === getSelectedQuestionData().answerIndex);
+    DOM_scorecard.classList.replace('smallScore', 'bigScore') // change size
+    //DOM_pressSpace.classList.toggle('hidden') // show/hide press space message
+    //DOM_answertext.classList.toggle('hidden') // show/hide press Answer Text
+
+    //DOM_answerText.textContent = getSelectedQuestionData()
+    //questionsDataArray[CurrentQuestionDataIndex]
+    DOM_scorecard.textContent = "ANSWER IS: " + questionsDataArray[CurrentQuestionDataIndex].options[getSelectedQuestionData().answerIndex]
+  
+  
+
+
+    if (selectedAnswer === getSelectedQuestionData().answerIndex) {
+      DOM_scorecard.textContent += "CORRECT"
+      DOM_scorecard.style.background = "blue"
+      DOM_scorecard.classList.toggle('correct') 
+      score += 10;
+      DOM_scorecard.textContent += "current score: " + score
+
+
+      //message
+      //correctclass
+
+
+
+    } else {
+
+      console.log("incorrect selected")
+      DOM_scorecard.textContent += "WRONG MATE"
+      DOM_scorecard.style.background = "red"
+      DOM_scorecard.classList.toggle('incorrect') 
+      DOM_scorecard.textContent += "current score: " + score
+
+      //message
+      //incorrectclass
+    }
+
+    //show correct answer text
 
     //show the popup
     //give the popup correct class - success or incorrect?
 
 }
+
+
 function loadNextQuestion() {
     CurrentQuestionDataIndex++;
     loadQuestionCard();
@@ -91,22 +133,34 @@ function somethingWasTyped(key) {
   }
 }
 
-let DOM_scorecard = document.querySelector("#currentScore");
-
 function userPressedSpace(){
   console.log(DOM_scorecard.classList, "this is the classList")
   
-  if(DOM_scorecard.classList.contains('bigscore')){
+  if(DOM_scorecard.classList.contains('bigScore')){
     DOM_scorecard.classList.replace('bigScore', 'smallScore')
-    // call next card function
+    console.log("smallscore run")
   }
+
+  //setting limit on amount of questions in game
+  if (CurrentQuestionDataIndex <= 4) {
+    loadNextQuestion()
+} else {
+  console.log("GAME HAS ENDED")
+  DOM_scorecard.textContent = "GAME HAS ENDED"
 }
 
-function UserChoseOption(optionNumber){
-  DOM_scorecard.classList.replace('smallScore', 'bigScore')
-  //Need to change inner text to say correct or incorrect
+//reset scroeboard at end of each question
+DOM_scorecard.textContent = "score:" + score
+DOM_scorecard.style.background = "green"
+DOM_scorecard.classList.remove("correct")
+DOM_scorecard.classList.remove("incorrect")
+
 }
+
+
+  
 
 InitializeRound();
 loadQuestionCard();
+
 
