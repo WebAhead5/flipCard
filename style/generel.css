@@ -74,6 +74,7 @@ body{
     word-break: break-word;
 }
 
+
 .answers{
     /*border: 5px black solid;*/
     background-color: rgba(0,0,0,0.2);
@@ -144,29 +145,46 @@ body{
 .hidden{
     display:none;
 }
-
+.flexRow{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.flexCol{
+    display: flex;
+    flex-direction: column;
+}
 
 
 .currentScore{
     background-color: white ;
     border: black solid;
+
+    vertical-align:center;
     text-align: center;
-}
-.bigScore{
-    width: 60vw;
-    height: 40vh;
-    background: darkgreen;
-    position: absolute;
-    left: 20vw;
-    top: 30vh;
-}
-.smallScore{
+    white-space: nowrap;
     width: fit-content;
     height: fit-content;
+
+    transition: width 2s, height 2s, top 2s, left 2s, right 2s;
+
+}
+
+.smallScore{
     background: gray;
     position: absolute;
     right: 1vh;
     top: 1vh;
+}
+.bigScore{
+    width: 60vw;
+    height: 40vh;
+
+    background: darkgreen;
+
+    position: absolute;
+    left: 20vw;
+    top: 30vh;
 }
 .onCorrectAnswer{
     background: darkgreen;
