@@ -19,13 +19,12 @@ let DOM_correctResponses = document.querySelectorAll('.onCorrectAnswer');
 let DOM_timer = document.getElementById("timerWidth");
 let DOM_currentScoreValue = document.getElementById('currentScoreValue')
 let DOM_correctAnswer = document.querySelector('#correctAnswer')
-
-console.log('DOM_wrongResonses', DOM_wrongResponses)
-
-
 let DOM_pressSpace  = document.querySelector("#pressSpace");
-//let DOM_answerText  = document.querySelector("#answerText");
-//let DOM_  = document.querySelector("#");
+let DOM_endGame = document.getElementById("endGame");
+let DOM_endGameText = document.getElementById("endGameText");
+
+
+let hasAnswered = false;
 
 let questionsDataArray ;
 let CurrentQuestionDataIndex = 0;
@@ -33,40 +32,73 @@ let CurrentQuestionDataIndex = 0;
 function getSelectedQuestionData() {
     return questionsDataArray[CurrentQuestionDataIndex];
 }
-function InitializeRound(){
+function initializeRound(){
     //take the player's name
     //initialize the score
     //select game difficulty (mode)
+    hasAnswered = false;
     CurrentQuestionDataIndex=0;
     questionsDataArray = model.gameManagerObj.getQuestionsData();
     model.playerObj.playerScore=0;
+
+    model.gameManagerObj.stopTimer();
+
+
+  DOM_correctResponses.forEach(x => x.classList.remove('hidden'));
+  DOM_wrongResponses.forEach(x => x.classList.remove('hidden'));
+  DOM_correctResponses.forEach(x => x.classList.add('hidden'));
+  DOM_wrongResponses.forEach(x => x.classList.add('hidden'));
+  DOM_endGame.classList.remove("hidden");
+  DOM_endGame.classList.add("hidden");
+  DOM_currentScoreValue.textContent = model.playerObj.playerScore;
+
 }
 
 
 function loadQuestionCard(){
 
+  if(questionsDataArray.length  === CurrentQuestionDataIndex)
+  {
+    DOM_endGame.classList.remove("hidden");
+    DOM_endGameText.textContent = "the game has ended - you total score is " + model.playerObj.playerScore;
+    return;
+  }
+  hasAnswered = false;
+
   let currentQData= getSelectedQuestionData();
   DOM_question.textContent = currentQData.getQuestion();
 
   DOM_option1.textContent = currentQData.getOption(0);
-  DOM_option1.addEventListener("click",()=> showAnswer(0));
+  DOM_option1.parentElement.addEventListener("click",()=> showAnswer(0));
 
   DOM_option2.textContent = currentQData.getOption(1);
-  DOM_option2.addEventListener("click",()=> showAnswer(1));
+  DOM_option2.parentElement.addEventListener("click",()=> showAnswer(1));
 
   DOM_option3.textContent = currentQData.getOption(2);
-  DOM_option3.addEventListener("click",()=> showAnswer(2));
+  DOM_option3.parentElement.addEventListener("click",()=> showAnswer(2));
 
   model.gameManagerObj.startTimer(()=>{
     let currentCountdown = model.gameManagerObj.getCurrentCountDown();
 
     DOM_timer.style.width = `${100 * (model.gameManagerObj.getCountDownDuration() - currentCountdown)/model.gameManagerObj.getCountDownDuration()}%`;
+    if(currentCountdown> model.gameManagerObj.getCountDownDuration())
+    {
+      model.gameManagerObj.stopTimer();
+
+    }
   });
 
 }
 function showAnswer(selectedAnswer) {
 
-    DOM_scorecard.classList.replace('smallScore', 'bigScore') // change size
+  if(hasAnswered) return ;
+  else  hasAnswered = true;
+
+
+  model.gameManagerObj.stopTimer();
+
+
+  DOM_scorecard.classList.replace('smallScore', 'bigScore') // change size
     //DOM_pressSpace.classList.toggle('hidden') // show/hide press space message
     //DOM_answertext.classList.toggle('hidden') // show/hide press Answer Text
 
@@ -153,33 +185,47 @@ function somethingWasTyped(key) {
 }
 
 function userPressedSpace(){
+
+  if(!hasAnswered)
+    return;
+
   console.log(DOM_scorecard.classList, "this is the classList")
   
   if(DOM_scorecard.classList.contains('bigScore')){
     DOM_scorecard.classList.replace('bigScore', 'smallScore')
-    console.log("smallscore run")
   }
 
-  //setting limit on amount of questions in game
-  if (CurrentQuestionDataIndex <= 2) {
-    loadNextQuestion();
-} else {
-  console.log("GAME HAS ENDED")
-  DOM_scorecard.textContent = "GAME HAS ENDED"
-}
 
-//reset scroeboard at end of each question
-DOM_scorecard.textContent = "score:" + model.playerObj.playerScore
-DOM_scorecard.style.background = "green"
-DOM_scorecard.classList.remove("correct")
-DOM_scorecard.classList.remove("incorrect")
+  DOM_correctResponses.forEach(x => x.classList.remove('hidden'));
+  DOM_wrongResponses.forEach(x => x.classList.remove('hidden'));
+
+
+  DOM_correctResponses.forEach(x => x.classList.add('hidden'));
+  DOM_wrongResponses.forEach(x => x.classList.add('hidden'));
+
+
+      loadNextQuestion();
+
+  //setting limit on amount of questions in game
+//   if (CurrentQuestionDataIndex <= 2) {
+//     loadNextQuestion();
+// } else {
+//   console.log("GAME HAS ENDED")
+//   DOM_scorecard.textContent = "GAME HAS ENDED"
+// }
+
+// //reset scroeboard at end of each question
+// DOM_scorecard.textContent = "score:" + model.playerObj.playerScore
+// DOM_scorecard.style.background = "green"
+// DOM_scorecard.classList.remove("correct")
+// DOM_scorecard.classList.remove("incorrect")
 
 }
 
 
   
 
-InitializeRound();
+initializeRound();
 loadQuestionCard();
 
 
