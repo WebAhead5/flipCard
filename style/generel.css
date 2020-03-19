@@ -181,7 +181,7 @@ body{
     height: fit-content;
 
     transition: width 2s, height 2s, top 2s, left 2s, right 2s;
-
+    z-index: 4;
 }
 
 .smallScore{
@@ -195,7 +195,6 @@ body{
     height: 40vh;
 
     background: darkgreen;
-
     position: absolute;
     left: 20vw;
     top: 30vh;

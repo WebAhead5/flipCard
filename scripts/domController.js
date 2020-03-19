@@ -19,8 +19,7 @@ let DOM_pressSpace  = document.querySelector("#pressSpace");
 //let DOM_answerText  = document.querySelector("#answerText");
 //let DOM_  = document.querySelector("#");
 
-let score = 0 // palyer score
-let questionsDataArray ; 
+let questionsDataArray ;
 let CurrentQuestionDataIndex = 0;
 
 function getSelectedQuestionData() {
@@ -32,6 +31,7 @@ function InitializeRound(){
     //select game difficulty (mode)
     CurrentQuestionDataIndex=0;
     questionsDataArray = model.gameManagerObj.getQuestionsData();
+    model.playerObj.playerScore=0;
 }
 
 
@@ -57,7 +57,7 @@ function showAnswer(selectedAnswer) {
 
     //DOM_answerText.textContent = getSelectedQuestionData()
     //questionsDataArray[CurrentQuestionDataIndex]
-    DOM_scorecard.textContent = "ANSWER IS: " + questionsDataArray[CurrentQuestionDataIndex].options[getSelectedQuestionData().answerIndex]
+    DOM_scorecard.textContent = "ANSWER IS: " + getSelectedQuestionData().options[getSelectedQuestionData().answerIndex]
   
   
 
@@ -65,9 +65,9 @@ function showAnswer(selectedAnswer) {
     if (selectedAnswer === getSelectedQuestionData().answerIndex) {
       DOM_scorecard.textContent += "CORRECT"
       DOM_scorecard.style.background = "blue"
-      DOM_scorecard.classList.toggle('correct') 
-      score += 10;
-      DOM_scorecard.textContent += "current score: " + score
+      DOM_scorecard.classList.toggle('correct')
+      model.playerObj.playerScore += model.gameManagerObj.getScore();
+      DOM_scorecard.textContent += "current score: " + model.playerObj.playerScore;
 
 
       //message
@@ -143,7 +143,7 @@ function userPressedSpace(){
 
   //setting limit on amount of questions in game
   if (CurrentQuestionDataIndex <= 4) {
-    loadNextQuestion()
+    loadNextQuestion();
 } else {
   console.log("GAME HAS ENDED")
   DOM_scorecard.textContent = "GAME HAS ENDED"
