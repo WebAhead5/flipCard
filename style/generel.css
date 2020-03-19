@@ -41,19 +41,6 @@ body{
 
 
 
-.currentScore{
-    background-color: white ;
-    border: black solid;
-    position: absolute;
-    height: 50px;
-    width: 100px;
-    right: 4%;
-    top: 2%;
-
-
-
-}
-
 .resultPopUp{
 
 
@@ -159,6 +146,12 @@ body{
 }
 
 
+
+.currentScore{
+    background-color: white ;
+    border: black solid;
+    text-align: center;
+}
 .bigScore{
     width: 60vw;
     height: 40vh;
