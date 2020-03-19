@@ -15,6 +15,11 @@ let DOM_option2  = document.getElementById("answer2");
 let DOM_option3  = document.getElementById("answer3");
 let DOM_scorecard = document.querySelector("#currentScore");
 
+let DOM_pressSpace  = document.querySelector("#pressSpace");
+//let DOM_answerText  = document.querySelector("#answerText");
+//let DOM_  = document.querySelector("#");
+
+let score = 0 // palyer score
 let questionsDataArray ; 
 let CurrentQuestionDataIndex = 0;
 
@@ -46,13 +51,27 @@ function loadQuestionCard(){
 }
 function showAnswer(selectedAnswer) {
 
-    DOM_scorecard.classList.replace('smallScore', 'bigScore')
+    DOM_scorecard.classList.replace('smallScore', 'bigScore') // change size
+    //DOM_pressSpace.classList.toggle('hidden') // show/hide press space message
+    //DOM_answertext.classList.toggle('hidden') // show/hide press Answer Text
 
-    //add text to scorecard - messgae press space bar (class or DOM)
+    //DOM_answerText.textContent = getSelectedQuestionData()
+    //questionsDataArray[CurrentQuestionDataIndex]
+    DOM_scorecard.textContent = "ANSWER IS: " + questionsDataArray[CurrentQuestionDataIndex].options[getSelectedQuestionData().answerIndex]
+  
+    
+
+    
 
 
     if (selectedAnswer === getSelectedQuestionData().answerIndex) {
-      //correct
+      console.log("correct selected")
+      DOM_scorecard.textContent += "CORRECT!!!"
+      DOM_scorecard.style.background = "blue"
+      DOM_scorecard.classList.toggle('correct') 
+      score += 10;
+      DOM_scorecard.textContent += "current score: " + score
+
 
       //message
       //correctclass
@@ -61,7 +80,11 @@ function showAnswer(selectedAnswer) {
 
     } else {
 
-      //incorrect
+      console.log("incorrect selected")
+      DOM_scorecard.textContent += "WRONG MATE"
+      DOM_scorecard.style.background = "red"
+      DOM_scorecard.classList.toggle('incorrect') 
+      DOM_scorecard.textContent += "current score: " + score
 
       //message
       //incorrectclass
@@ -116,18 +139,22 @@ function somethingWasTyped(key) {
 function userPressedSpace(){
   console.log(DOM_scorecard.classList, "this is the classList")
   
-  if(DOM_scorecard.classList.contains('bigscore')){
+  if(DOM_scorecard.classList.contains('bigScore')){
     DOM_scorecard.classList.replace('bigScore', 'smallScore')
-    // call next card function
+    console.log("smallscore run")
   }
 
-  if (CurrentQuestionDataIndex <= 2) {
+  if (CurrentQuestionDataIndex <= 4) {
     loadNextQuestion()
 } else {
+
   console.log("GAME HAS ENDED")
-    //end game screen
+  DOM_scorecard.textContent = "GAME HAS ENDED"
 }
 
+//reset scroeboard
+DOM_scorecard.textContent = "score:" + score
+DOM_scorecard.style.background = "green"
 
 }
 
