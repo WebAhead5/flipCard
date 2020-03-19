@@ -103,11 +103,27 @@ function randomizeArray(arr){
      let retArr=[];
      while(clone.length>0){
         let randomNum = Math.floor(Math.random() * clone.length);
-        retArr.push(...clone.splice(randomNum,1));
+        let cardData = clone.splice(randomNum,1)[0];
+
+        //randomize the card options
+         randomizeOptionsInQuestionData(cardData);
+
+        retArr.push(cardData);
      }
      return retArr;
 }
 
+function randomizeOptionsInQuestionData(qData){
+    let options = qData.options;
+    let randomizedOptions=[];
+    let correctAns = qData.getAnswer();
 
+    while(options.length>0){
+        let randomNum = Math.floor(Math.random() * options.length);
+        randomizedOptions.push(...options.splice(randomNum,1));
+    }
+    qData.options = randomizedOptions;
+    qData.answerIndex = qData.options.indexOf(correctAns);
+ }
 
 
