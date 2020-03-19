@@ -51,6 +51,8 @@ const hardQuestions= [
 
     },1000)
 }
+
+
 //-----------------------------------------------------------------------------------------
 
 export const playerObj ={
@@ -63,6 +65,10 @@ export const gameManagerObj={
     scorePerRound_mediumMode: 20,
     scorePerRound_hardMode: 30,
     roundType:"easy",
+    countDownTimer_eayMode: 30,
+    countDownTimer_mediumMode: 30,
+    countDownTimer_hardMode: 30,
+
     getScore(){
         switch (this.roundType.toLowerCase()) {
             case "easy":
@@ -93,13 +99,31 @@ export const gameManagerObj={
      * @param seconds - the countdown in seconds
      * @param func - the function that will be called every second of the countdown
      */
-    startTimer(seconds, func){
-        timer(seconds,func);
+    startTimer(func){
+        timer(this.getCountDownDuration(),func);
     },
+    stopTimer(){
+        clearInterval(intervalID);
+    },
+
     calculateScoreForRound(){
     return currentCountdown * this.getScore();
-    }
+    },
 
+   getCountDownDuration(){
+       switch (this.roundType.toLowerCase()) {
+           case "easy":
+               return this.countDownTimer_eayMode;
+           case "medium":
+               return this.countDownTimer_mediumMode;
+           case "hard":
+               return this.countDownTimer_hardMode;
+
+       }
+   } ,
+    getCurrentCountDown(){
+        return currentCountdown;
+    }
 }
 
 function randomizeArray(arr){

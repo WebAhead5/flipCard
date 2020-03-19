@@ -38,7 +38,7 @@ body{
     display: flex;
 }
 .timerFill{
-    width: 100%;
+    width: 0%;
     background: orange;
     transition: width 1s;
 }

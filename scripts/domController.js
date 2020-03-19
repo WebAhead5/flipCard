@@ -16,6 +16,7 @@ let DOM_option3  = document.getElementById("answer3");
 let DOM_scorecard = document.querySelector("#currentScore");
 let DOM_wrongResponses = document.querySelectorAll('.onWrongAnswer');
 let DOM_correctResponses = document.querySelectorAll('.onCorrectAnswer');
+let DOM_timer = document.getElementById("timerWidth");
 
 console.log('DOM_wrongResonses', DOM_wrongResponses)
 
@@ -41,6 +42,7 @@ function InitializeRound(){
 
 
 function loadQuestionCard(){
+
   let currentQData= getSelectedQuestionData();
   DOM_question.textContent = currentQData.getQuestion();
 
@@ -53,8 +55,17 @@ function loadQuestionCard(){
   DOM_option3.textContent = currentQData.getOption(2);
   DOM_option3.addEventListener("click",()=> showAnswer(2));
 
+  model.gameManagerObj.startTimer(()=>{
+    let currentCountdown = model.gameManagerObj.getCurrentCountDown();
+
+    DOM_timer.style.width = `${100 * (model.gameManagerObj.getCountDownDuration() - currentCountdown)/model.gameManagerObj.getCountDownDuration()}%`;
+  });
+
 }
 function showAnswer(selectedAnswer) {
+
+   model.gameManagerObj.stopTimer();
+   DOM_timer.style.width = "0";
 
     DOM_scorecard.classList.replace('smallScore', 'bigScore') // change size
     //DOM_pressSpace.classList.toggle('hidden') // show/hide press space message
