@@ -167,13 +167,19 @@ body{
     left: 20vw;
     top: 30vh;
 }
-
 .smallScore{
     width: fit-content;
     height: fit-content;
-    background: darkgreen;
+    background: gray;
     position: absolute;
     right: 1vh;
     top: 1vh;
 }
+.onCorrectAnswer{
+    background: darkgreen;
 
+}
+.onWrongAnswer{
+    background: darkred;
+
+}

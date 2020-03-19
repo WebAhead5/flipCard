@@ -26,7 +26,26 @@
 
     <!-- //curent Score -->
     <div id="curentScore" class="currentScore smallScore">
-        score
+        <table>
+            <tr>
+                <td>score:</td>
+                <td id="score">0</td>
+            </tr>
+            <tr >
+               <td class="OnCorrectAnswer hidden" colspan="2">correct!!!!!</td>
+               <td class="wrongAnswer hidden" colspan="2">wrong!!!!</td>
+            </tr >
+            <tr class="onWrongAnswer hidden">
+                <td  colspan="2">the correct answer is</td>
+            </tr>
+            <tr class="onWrongAnswer hidden">
+                <td colspan="2"><p id="correctAnswer"></p> </td>
+            </tr>
+            <tr>
+                <td colspan="2" id="spaceToContinue" >Press 'Space' to go to the next question</td>
+            </tr>
+
+        </table>
     </div>
 
 
