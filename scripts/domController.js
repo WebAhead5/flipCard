@@ -14,6 +14,11 @@ let DOM_option1  = document.getElementById("answer1");
 let DOM_option2  = document.getElementById("answer2");
 let DOM_option3  = document.getElementById("answer3");
 let DOM_scorecard = document.querySelector("#currentScore");
+let DOM_wrongResponses = document.querySelectorAll('.onWrongAnswer');
+let DOM_correctResponses = document.querySelectorAll('.onCorrectAnswer');
+
+console.log('DOM_wrongResonses', DOM_wrongResponses)
+
 
 let DOM_pressSpace  = document.querySelector("#pressSpace");
 //let DOM_answerText  = document.querySelector("#answerText");
@@ -68,7 +73,11 @@ function showAnswer(selectedAnswer) {
       DOM_scorecard.classList.toggle('correct')
       model.playerObj.playerScore += model.gameManagerObj.getScore();
       DOM_scorecard.textContent += "current score: " + model.playerObj.playerScore;
-
+ 
+      
+      DOM_correctResponses.forEach(x => x.classList.remove('hidden'));
+      DOM_wrongResponses.forEach(x => x.classList.remove('hidden'));
+      DOM_wrongResponses.forEach(x => x.classList.add('hidden'));
 
       //message
       //correctclass
@@ -78,10 +87,15 @@ function showAnswer(selectedAnswer) {
     } else {
 
       console.log("incorrect selected")
+
       DOM_scorecard.textContent += "WRONG MATE"
       DOM_scorecard.style.background = "red"
-      DOM_scorecard.classList.toggle('incorrect') 
-      DOM_scorecard.textContent += "current score: " + score
+      DOM_scorecard.textContent += "current score: " + model.playerObj.playerScore;
+
+
+      DOM_correctResponses.forEach(x => x.classList.remove('hidden'));
+      DOM_correctResponses.forEach(x => x.classList.add('hidden'));
+      DOM_wrongResponses.forEach(x => x.classList.remove('hidden')); 
 
       //message
       //incorrectclass
@@ -142,7 +156,7 @@ function userPressedSpace(){
   }
 
   //setting limit on amount of questions in game
-  if (CurrentQuestionDataIndex <= 4) {
+  if (CurrentQuestionDataIndex <= 2) {
     loadNextQuestion();
 } else {
   console.log("GAME HAS ENDED")
@@ -150,7 +164,7 @@ function userPressedSpace(){
 }
 
 //reset scroeboard at end of each question
-DOM_scorecard.textContent = "score:" + score
+DOM_scorecard.textContent = "score:" + model.playerObj.playerScore
 DOM_scorecard.style.background = "green"
 DOM_scorecard.classList.remove("correct")
 DOM_scorecard.classList.remove("incorrect")
