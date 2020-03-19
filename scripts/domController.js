@@ -16,6 +16,8 @@ let DOM_option3  = document.getElementById("answer3");
 let DOM_scorecard = document.querySelector("#currentScore");
 let DOM_wrongResponses = document.querySelectorAll('.onWrongAnswer');
 let DOM_correctResponses = document.querySelectorAll('.onCorrectAnswer');
+let DOM_currentScoreValue = document.getElementById('currentScoreValue')
+let DOM_correctAnswer = document.querySelector('#correctAnswer')
 
 console.log('DOM_wrongResonses', DOM_wrongResponses)
 
@@ -57,23 +59,19 @@ function loadQuestionCard(){
 function showAnswer(selectedAnswer) {
 
     DOM_scorecard.classList.replace('smallScore', 'bigScore') // change size
-    //DOM_pressSpace.classList.toggle('hidden') // show/hide press space message
-    //DOM_answertext.classList.toggle('hidden') // show/hide press Answer Text
 
-    //DOM_answerText.textContent = getSelectedQuestionData()
-    //questionsDataArray[CurrentQuestionDataIndex]
-    DOM_scorecard.textContent = "ANSWER IS: " + getSelectedQuestionData().options[getSelectedQuestionData().answerIndex]
+    DOM_correctAnswer.textContent = "ANSWER IS: " + getSelectedQuestionData().options[getSelectedQuestionData().answerIndex]
   
   
 
 
     if (selectedAnswer === getSelectedQuestionData().answerIndex) {
-      DOM_scorecard.textContent += "CORRECT"
-      DOM_scorecard.style.background = "blue"
-      DOM_scorecard.classList.toggle('correct')
+
       model.playerObj.playerScore += model.gameManagerObj.getScore();
-      DOM_scorecard.textContent += "current score: " + model.playerObj.playerScore;
- 
+      console.log("score is",model.playerObj.playerScore)
+
+      //DOM_currentScoreValue.textContent += "current score: " + model.playerObj.playerScore;
+      DOM_currentScoreValue.textContent = model.playerObj.playerScore;
       
       DOM_correctResponses.forEach(x => x.classList.remove('hidden'));
       DOM_wrongResponses.forEach(x => x.classList.remove('hidden'));
@@ -88,11 +86,8 @@ function showAnswer(selectedAnswer) {
 
       console.log("incorrect selected")
 
-      DOM_scorecard.textContent += "WRONG MATE"
-      DOM_scorecard.style.background = "red"
-      DOM_scorecard.textContent += "current score: " + model.playerObj.playerScore;
-
-
+      //DOM_currentScoreValue.textContent += "current score: " + model.playerObj.playerScore;
+      
       DOM_correctResponses.forEach(x => x.classList.remove('hidden'));
       DOM_correctResponses.forEach(x => x.classList.add('hidden'));
       DOM_wrongResponses.forEach(x => x.classList.remove('hidden')); 
