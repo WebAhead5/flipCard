@@ -214,8 +214,6 @@ body{
 
 }
 
-
-
 .resultPopUp{
 
 
@@ -317,5 +315,25 @@ body{
 }
 
 .hidden{
-    /*display:none;*/
+    display:none;
 }
+
+
+.bigScore{
+    width: 60vw;
+    height: 40vh;
+    background: darkgreen;
+    position: absolute;
+    left: 20vw;
+    top: 30vh;
+}
+
+.smallScore{
+    width: fit-content;
+    height: fit-content;
+    background: darkgreen;
+    position: absolute;
+    right: 1vh;
+    top: 1vh;
+}
+
