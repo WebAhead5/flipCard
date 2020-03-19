@@ -225,4 +225,15 @@ body{
     font-size: 50px;
     text-align: center;
 
+
+}
+
+#endGame>div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-content: center;
+    word-break: break-word;
 }

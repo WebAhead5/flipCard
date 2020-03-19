@@ -50,6 +50,7 @@ function initializeRound(){
   DOM_wrongResponses.forEach(x => x.classList.add('hidden'));
   DOM_endGame.classList.remove("hidden");
   DOM_endGame.classList.add("hidden");
+
   DOM_currentScoreValue.textContent = model.playerObj.playerScore;
 
 }
@@ -61,6 +62,7 @@ function loadQuestionCard(){
   {
     DOM_endGame.classList.remove("hidden");
     DOM_endGameText.textContent = "the game has ended - you total score is " + model.playerObj.playerScore;
+    hasAnswered = true;
     return;
   }
   hasAnswered = false;
