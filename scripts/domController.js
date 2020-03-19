@@ -13,7 +13,7 @@ let DOM_question  = document.getElementById("question");
 let DOM_option1  = document.getElementById("answer1");
 let DOM_option2  = document.getElementById("answer2");
 let DOM_option3  = document.getElementById("answer3");
-let DOM_resultPopup = document.getElementById("resultPopup");//todo match the id
+let DOM_scorecard = document.querySelector("#currentScore");
 
 let questionsDataArray ; 
 let CurrentQuestionDataIndex = 0;
@@ -46,10 +46,32 @@ function loadQuestionCard(){
 }
 function showAnswer(selectedAnswer) {
 
-    // DOM_resultPopup.classList.toggle("");  ///todo setup the current class name
-    console.log(selectedAnswer === getSelectedQuestionData().answerIndex);
+    DOM_scorecard.classList.replace('smallScore', 'bigScore')
+
+    //add text to scorecard - messgae press space bar (class or DOM)
+
+
+    if (selectedAnswer === getSelectedQuestionData().answerIndex) {
+      //correct
+
+      //message
+      //correctclass
+
+
+
+    } else {
+
+      //incorrect
+
+      //message
+      //incorrectclass
+    }
+
+    //show correct answer text
 
 }
+
+
 function loadNextQuestion() {
     CurrentQuestionDataIndex++;
     loadQuestionCard();
@@ -70,15 +92,15 @@ function somethingWasTyped(key) {
   switch(key.keyCode) {
     case 49:
       console.log("key is 1");
-      userChoseOption(1);
+      showAnswer(0)
       break;
     case 50:
       console.log("key is 2")
-      userChoseOption(2);
+      showAnswer(1);
       break;
     case 51:
       console.log("key is 3");
-      UserChoseOption(3);
+      showAnswer(2);
       break;
     case 32:
       console.log("space hit");
@@ -88,20 +110,23 @@ function somethingWasTyped(key) {
   }
 }
 
-let DOM_scorecard = document.querySelector("#currentScore");
-
 function userPressedSpace(){
   console.log(DOM_scorecard.classList, "this is the classList")
   
   if(DOM_scorecard.classList.contains('bigscore')){
     DOM_scorecard.classList.replace('bigScore', 'smallScore')
   }
+
+  if (CurrentQuestionDataIndex <= 2) {
+    loadNextQuestion()
+} else {
+  console.log("GAME HAS ENDED")
+    //end game screen
 }
 
-function UserChoseOption(optionNumber){
-  DOM_scorecard.classList.replace('smallScore', 'bigScore')
-  //Need to change inner text to say correct or incorrect
+
 }
+
 
 InitializeRound();
 loadQuestionCard();
