@@ -1,11 +1,23 @@
 
+box-sizing: border-box;
+position: absolute;
+display: flex;
+justify-content: space-between;
+top: 6 * @card-padding;
+left: 6 * @card-padding;
+right: 6 * @card-padding;
+bottom: 6 * @card-padding;
+
+
+
+
 body{
 
     /*margin: 5vh;*/
     text-align: center;
     /*justify-content: center;*/
     font-family: 'Work Sans', David, serif;
-    font-size: 18px;
+    font-size: 20px;
     padding: 0px;
     margin: 0px;
 }
@@ -14,7 +26,6 @@ body{
 
 
     border: darkgreen    solid;
-    background-color: #f0f0f0;
 
     /*padding: 10px;*/
     /*margin:10px;*/
@@ -42,6 +53,19 @@ body{
 
 
 
+.currentScore{
+    background-color: white ;
+    border: black solid;
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    right: 4%;
+    top: 2%;
+
+
+
+}
+
 .resultPopUp{
 
 
@@ -56,8 +80,7 @@ body{
 
 
 .question{
-    background-color: #FFFFFF
-    ;
+    background-color: rgba(0,0,0,.1);
     /*border: black solid;*/
 
     width: 60%;
@@ -66,68 +89,72 @@ body{
     text-align: center;
     position: relative;
     left: 20%;
-    top:15%;
 
     display:flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(62, 90, 55.13)
 }
 .question p{
-    
+    border: darkred solid 5px;
     word-break: break-word;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15)
 }
 
-
 .answers{
-    /*border: 5px black solid;*/
-    
+
+
+    position: relative;
+	display: inline-block;
+	width: @card-width;
+	height: @card-height;
+	font: @font-size 'Trebuchet MS';
+	
+	margin: @gutter;
+	border-radius: @card-padding;
+	background: @card-background;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+
+
+
+
+
+    /* border: 5px black solid; 
+   background-color: rgba(0,0,0,0.2); 
 
     width: 90%;
     height: fit-content;
     min-height: 15%;
-    padding: 20px;
+
     position: absolute;
-    bottom: 49px;
-    left:0;
-    right: 0;
-    margin: auto;
+    bottom: 20px;
+    left: 5%;
 
 
     display: flex;
     justify-content: space-evenly;
-    align-items: stretch;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    align-items: stretch; */
 
 
 }
 
 .answers>div {
-   
-    background-color: #FFFFFF
-    ;
-    padding: 5px;
+
+    /*height: 100%;*/
+
     width: 30%;
+    border: blue solid;
     word-break: break-word;
     flex-direction: row;
     align-content: stretch;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18)
 }
 .answers>div>p{
-    
-}
-.answers>div:hover{
-    box-shadow: 0 4px 8px rgba(62, 90, 55, 0.5);
-    font-size:22px  ;
+    border:red solid;
 }
 
 @media screen and (max-width: 600px){
     .question{
         width: 100%;
         left: 0;
-        top:5%;
     }
     .answers{
         padding: 0 30px;
@@ -159,52 +186,23 @@ body{
 .hidden{
     display:none;
 }
-.flexRow{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-.flexCol{
-    display: flex;
-    flex-direction: column;
-}
 
 
-.currentScore{
-    background-color: white ;
-    border: black solid;
-
-    vertical-align:center;
-    text-align: center;
-    white-space: nowrap;
-    width: fit-content;
-    height: fit-content;
-
-    transition: width 2s, height 2s, top 2s, left 2s, right 2s;
-
-}
-
-.smallScore{
-    background: gray;
-    position: absolute;
-    right: 1vh;
-    top: 1vh;
-}
 .bigScore{
     width: 60vw;
     height: 40vh;
-
     background: darkgreen;
-
     position: absolute;
     left: 20vw;
     top: 30vh;
 }
-.onCorrectAnswer{
+
+.smallScore{
+    width: fit-content;
+    height: fit-content;
     background: darkgreen;
-
+    position: absolute;
+    right: 1vh;
+    top: 1vh;
 }
-.onWrongAnswer{
-    background: darkred;
 
-}

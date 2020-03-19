@@ -18,9 +18,11 @@ export class questionData{
 
 }
 
-const easyQuestions=[
-    new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
-    new questionData("what is the capital Italy?",1 ,"haifa","rome", "madrid"),
+const easyQuestions=[new questionData("Name the String methods that work with RegEx patterns:", 0, "match, replace, search, split", "map, split, join, match", "match, delet, pop, push"),
+new questionData("Match a pattern only if it occurs at end of string with what character?", 0, "$", "^", "#"),
+new questionData("Match a pattern only if it occurs at beginning of string with what character", 0, "^", "#", "$"),
+new questionData("what is the syntax for the replace() method?", 0, "nameOfString.replace(patternToMatch, replaceWith)", "pattern.replace.est(someString)", "replace()String.exe(someString)"),
+
 ];
 const mediumQuestions= [
     new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
