@@ -49,6 +49,9 @@ function showAnswer(selectedAnswer) {
     // DOM_resultPopup.classList.toggle("");  ///todo setup the current class name
     console.log(selectedAnswer === getSelectedQuestionData().answerIndex);
 
+    //show the popup
+    //give the popup correct class - success or incorrect?
+
 }
 function loadNextQuestion() {
     CurrentQuestionDataIndex++;
@@ -70,15 +73,15 @@ function somethingWasTyped(key) {
   switch(key.keyCode) {
     case 49:
       console.log("key is 1");
-      userChoseOption(1);
+      showAnswer(0);
       break;
     case 50:
       console.log("key is 2")
-      userChoseOption(2);
+      showAnswer(1);
       break;
     case 51:
       console.log("key is 3");
-      UserChoseOption(3);
+      showAnswer(2);
       break;
     case 32:
       console.log("space hit");
@@ -95,6 +98,7 @@ function userPressedSpace(){
   
   if(DOM_scorecard.classList.contains('bigscore')){
     DOM_scorecard.classList.replace('bigScore', 'smallScore')
+    // call next card function
   }
 }
 
