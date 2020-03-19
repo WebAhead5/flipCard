@@ -42,19 +42,6 @@ body{
 
 
 
-.currentScore{
-    background-color: white ;
-    border: black solid;
-    position: absolute;
-    height: 50px;
-    width: 100px;
-    right: 4%;
-    top: 2%;
-
-
-
-}
-
 .resultPopUp{
 
 
@@ -91,6 +78,7 @@ body{
     word-break: break-word;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15)
 }
+
 
 .answers{
     /*border: 5px black solid;*/
@@ -130,6 +118,10 @@ body{
 .answers>div>p{
     
 }
+.answers>div:hover{
+    box-shadow: 0 4px 8px rgba(62, 90, 55, 0.5);
+    font-size:22px  ;
+}
 
 @media screen and (max-width: 600px){
     .question{
@@ -167,29 +159,52 @@ body{
 .hidden{
     display:none;
 }
+.flexRow{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.flexCol{
+    display: flex;
+    flex-direction: column;
+}
 
 
-.bigScore{
-    width: 60vw;
-    height: 40vh;
-    background: darkgreen;
-    position: absolute;
-    left: 20vw;
-    top: 30vh;
+.currentScore{
+    background-color: white ;
+    border: black solid;
+
+    vertical-align:center;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+    height: fit-content;
+
+    transition: width 2s, height 2s, top 2s, left 2s, right 2s;
+
 }
 
 .smallScore{
-    width: fit-content;
-    height: fit-content;
-    background: darkgreen;
+    background: gray;
     position: absolute;
     right: 1vh;
     top: 1vh;
 }
+.bigScore{
+    width: 60vw;
+    height: 40vh;
 
-.answers>div:hover{
-    box-shadow: 0 4px 8px rgba(62, 90, 55, 0.5);
-    font-size:22px  ;
-    
+    background: darkgreen;
+
+    position: absolute;
+    left: 20vw;
+    top: 30vh;
+}
+.onCorrectAnswer{
+    background: darkgreen;
+
+}
+.onWrongAnswer{
+    background: darkred;
 
 }

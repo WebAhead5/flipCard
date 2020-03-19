@@ -25,11 +25,44 @@
 
 
     <!-- //curent Score -->
-    <div id="curentScore" class="currentScore smallScore">
-        score
-    </div>
+        <table  class="currentScore smallScore" cellspacing="0">
+            <tr>
+                <td>
+                   <div class="flexRow"><p>score: </p><p id="score">0</p></div>
+                </td>
+            </tr>
+            <tr class="OnCorrectAnswer hidden" >
+               <td >correct!!!!!</td>
+            </tr >
+            <tr class="onWrongAnswer hidden">
+                <td >wrong!!!!</td>
+            </tr>
+            <tr class="onWrongAnswer hidden">
+                <td >the correct answer is</td>
+            </tr>
+            <tr class="onWrongAnswer hidden">
+                <td ><p id="correctAnswer"></p> </td>
+            </tr>
+            <tr>
+                <td id="spaceToContinue" class="hidden">Press 'Space' to go to the next question</td>
+            </tr>
 
+        </table>
 
+<!--
+    &lt;!&ndash; //curent Score &ndash;&gt;
+    <div class="flexCol currentScore smallScore">
+
+        <div class="flexRow"><p>score:</p> <p id="score">0</p> </div>
+
+        <div class="flexCol">
+            <p class="OnCorrectAnswer hidden" >correct!!!!!</p>
+            <p class="wrongAnswer hidden" >correct!!!!!</p>
+            <p class="wrongAnswer hidden">the correct answer is:</p>
+            <p id="correctAnswer"></p>
+            <p colspan="2" id="spaceToContinue" class="hidden">Press 'Space' to go to the next question</p>
+        </div>
+    </div>-->
 
 
 
