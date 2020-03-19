@@ -20,10 +20,9 @@ export class questionData{
 
 const easyQuestions=[
     new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
-    new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
-    new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
-    new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
-    new questionData("what is 2 + 2 ?", 0,"4","5", "2"),
+    new questionData("What is the regex expression used to match anything that's NOT a letter (not a, b, c, A, B, etc)",1,"[^a-zA-Z]/n","[^a-zA-Z]","[^a-zA-Z]/x"),
+    new questionData("Which of these regex expressions is NOT used for finding 3 digits in a row?",2,"/\d{3}/","/[0-9][0-9][0-9]/","/\{3}d/"),
+    new questionData("What is the github command for listing all local and remote branches?",1,"git branch -a","git branch","git branch -d"),
 
 
 ];
