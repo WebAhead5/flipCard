@@ -14,22 +14,25 @@
 <body>
 
 
+<!-- //timer  -->
+<div class="timerContainer">
+    <div id="timerWidth" class="timerFill"> </div>
+</div>
+
+
+
 <!-- game-container -->
 <div id="game-container" class="game-container" >
 
 
 
-    <!-- //timer  -->
-    <div id="timerDiv" class="timerDiv hidden">
-        timer
-    </div>
-
 
     <!-- //curent Score -->
-        <table  class="currentScore bigScore" cellspacing="0">
+
+        <table id="currentScore" class="currentScore smallScore" cellspacing="0">
             <tr>
                 <td>
-                   <div class="flexRow"><p>score: </p><p id="currentScore">0</p></div>
+                   <div class="flexRow"><p>score: </p><p id="currentScoreValue">0</p></div>
                 </td>
             </tr>
 
@@ -44,8 +47,9 @@
             </tr>
             <tr class="onWrongAnswer theCorrectAnswer hidden">
                 <td ><p id="correctAnswer"></p> </td>
+
             </tr>
-            <tr>
+            <tr>    
                 <td id="spaceToContinue" class="hidden">Press 'Space' to go to the next question</td>
             </tr>
 
@@ -73,12 +77,7 @@
     </div>
 
 
-
     <div id="resultPopUp" class="resultPopUp hidden"></div>
-
-
-
-
 
 
 
