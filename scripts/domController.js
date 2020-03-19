@@ -59,14 +59,11 @@ function showAnswer(selectedAnswer) {
     //questionsDataArray[CurrentQuestionDataIndex]
     DOM_scorecard.textContent = "ANSWER IS: " + questionsDataArray[CurrentQuestionDataIndex].options[getSelectedQuestionData().answerIndex]
   
-    
-
-    
+  
 
 
     if (selectedAnswer === getSelectedQuestionData().answerIndex) {
-      console.log("correct selected")
-      DOM_scorecard.textContent += "CORRECT!!!"
+      DOM_scorecard.textContent += "CORRECT"
       DOM_scorecard.style.background = "blue"
       DOM_scorecard.classList.toggle('correct') 
       score += 10;
@@ -144,21 +141,26 @@ function userPressedSpace(){
     console.log("smallscore run")
   }
 
+  //setting limit on amount of questions in game
   if (CurrentQuestionDataIndex <= 4) {
     loadNextQuestion()
 } else {
-
   console.log("GAME HAS ENDED")
   DOM_scorecard.textContent = "GAME HAS ENDED"
 }
 
-//reset scroeboard
+//reset scroeboard at end of each question
 DOM_scorecard.textContent = "score:" + score
 DOM_scorecard.style.background = "green"
+DOM_scorecard.classList.remove("correct")
+DOM_scorecard.classList.remove("incorrect")
 
 }
 
 
+  
+
 InitializeRound();
 loadQuestionCard();
+
 
