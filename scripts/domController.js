@@ -95,11 +95,7 @@ function somethingWasTyped(key) {
   switch(key.keyCode) {
     case 49:
       console.log("key is 1");
-<<<<<<< HEAD
-      showAnswer(0)
-=======
       showAnswer(0);
->>>>>>> master
       break;
     case 50:
       console.log("key is 2")
