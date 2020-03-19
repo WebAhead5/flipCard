@@ -113,6 +113,7 @@ function randomizeArray(arr){
      return retArr;
 }
 
+//JD - Are we randomising the order of the options here? This seems like an unnecessary complication, since we already gave them a random location.
 function randomizeOptionsInQuestionData(qData){
     let options = qData.options;
     let randomizedOptions=[];
