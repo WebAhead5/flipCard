@@ -19,9 +19,9 @@ let DOM_correctResponses = document.querySelectorAll('.onCorrectAnswer');
 let DOM_timer = document.getElementById("timerWidth");
 let DOM_currentScoreValue = document.getElementById('currentScoreValue')
 let DOM_correctAnswer = document.querySelector('#correctAnswer')
-let DOM_pressSpace  = document.querySelector("#pressSpace");
 let DOM_endGame = document.getElementById("endGame");
 let DOM_endGameText = document.getElementById("endGameText");
+let DOM_spaceContinue = document.getElementById("spaceToContinue");
 
 
 let hasAnswered = false;
@@ -113,6 +113,7 @@ function showAnswer(selectedAnswer) {
 
       model.playerObj.playerScore += model.gameManagerObj.getScore();
       console.log("score is",model.playerObj.playerScore)
+      
 
       //DOM_currentScoreValue.textContent += "current score: " + model.playerObj.playerScore;
       DOM_currentScoreValue.textContent = model.playerObj.playerScore;
@@ -141,7 +142,7 @@ function showAnswer(selectedAnswer) {
     }
 
     //show correct answer text
-
+    spaceToContinue.classList.toggle("hidden")
     //show the popup
     //give the popup correct class - success or incorrect?
 
@@ -200,7 +201,7 @@ function userPressedSpace(){
 
   DOM_correctResponses.forEach(x => x.classList.remove('hidden'));
   DOM_wrongResponses.forEach(x => x.classList.remove('hidden'));
-
+  spaceToContinue.classList.toggle("hidden")
 
   DOM_correctResponses.forEach(x => x.classList.add('hidden'));
   DOM_wrongResponses.forEach(x => x.classList.add('hidden'));
